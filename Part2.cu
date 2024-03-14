@@ -152,17 +152,6 @@ int main() {
         cudaEventElapsedTime(&transferTime, startTransferToDev, stopTransferToDev);
         std::cout << "Transfer complete after " << transferTime << " ms." << std::endl;
 
-        // COMMENT OUT FOR SINGLE THREAD GPU MULTIPLICATION
-        //std::cout << "Beginning single thread device multiplication." << std::endl;
-        //cudaDeviceSynchronize();
-        //float singleThreadTime = 0.0f;
-        //cudaEventRecord(startSingleTheadMult);
-        //matrixMulKernel <<<1, 1>>> (size, d_P, d_M, d_N); // Expected red squiggly line - IGNORE
-        //cudaEventRecord(stopSingleThreadMult);
-        //cudaEventSynchronize(stopSingleThreadMult);
-        //cudaEventElapsedTime(&singleThreadTime, startSingleTheadMult, stopSingleThreadMult);
-        //std::cout << "Operation complete after " << singleThreadTime << " ms." << std::endl;
-
         // COMMENT OUT FOR SINGLE MATRIX ENTRY MULTIPLICATION
         //std::cout << "Beginning single entry device multiplication." << std::endl;
         //cudaDeviceSynchronize();
@@ -174,6 +163,16 @@ int main() {
         //cudaEventElapsedTime(&singleEntryTime, startKernelMult, stopKernelMult);
         //std::cout << "Operation complete after " << singleEntryTime << " ms." << std::endl;
 
+        // COMMENT OUT FOR SINGLE THREAD GPU MULTIPLICATION
+        //std::cout << "Beginning single thread device multiplication." << std::endl;
+        //cudaDeviceSynchronize();
+        //float singleThreadTime = 0.0f;
+        //cudaEventRecord(startSingleTheadMult);
+        //matrixMulKernel <<<1, 1>>> (size, d_P, d_M, d_N); // Expected red squiggly line - IGNORE
+        //cudaEventRecord(stopSingleThreadMult);
+        //cudaEventSynchronize(stopSingleThreadMult);
+        //cudaEventElapsedTime(&singleThreadTime, startSingleTheadMult, stopSingleThreadMult);
+        //std::cout << "Operation complete after " << singleThreadTime << " ms." << std::endl;
 
         for (int i = 0; i < numOfBlockWidths; i++) {
             std::cout << "Beginning multiplication with block width: " << blockWidths[i] << std::endl;
